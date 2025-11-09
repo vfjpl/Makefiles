@@ -1,5 +1,5 @@
-TARGET = name.so
-FLAGS = -std=gnu99 -Os -ffast-math -pthread -s -shared
+TARGET = name.a
+FLAGS = -std=gnu99 -Os -ffast-math -pthread -s
 
 SOURCE_DIRS =\
 src\
@@ -9,7 +9,7 @@ SOURCES = $(wildcard $(patsubst %,%/*.c,$(SOURCE_DIRS)))
 OBJECTS = $(SOURCES:.c=.o)
 
 $(TARGET) : $(OBJECTS)
-	$(CC) $(FLAGS) $^ -o $@
+	$(AR) rcs $@ $^
 
 %.o : %.c
 	$(CC) $(FLAGS) -c $< -o $@
