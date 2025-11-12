@@ -1,5 +1,5 @@
 TARGET = name.so
-FLAGS = -std=gnu99 -Os -ffast-math -pthread -s -shared
+FLAGS = -std=gnu99 -Os -ffast-math -pthread -s -fpic -shared
 
 SOURCE_DIRS =\
 src\
