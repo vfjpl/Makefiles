@@ -5,6 +5,7 @@ SOURCE_DIRS =\
 src\
 
 
+INCLUDE_DIRS = $(patsubst %,-I%,$(SOURCE_DIRS))
 SOURCES = $(wildcard $(patsubst %,%/*.c,$(SOURCE_DIRS)))
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -12,7 +13,7 @@ $(TARGET) : $(OBJECTS)
 	$(CC) $(FLAGS) $^ -o $@
 
 %.o : %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(INCLUDE_DIRS) $(FLAGS) -c $< -o $@
 
 clean :
 	$(RM) $(OBJECTS) $(TARGET)
